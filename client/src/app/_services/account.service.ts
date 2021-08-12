@@ -12,7 +12,9 @@ export class AccountService {
   private currentUserSource = new ReplaySubject<User>(1);
   currentUser$ = this.currentUserSource.asObservable();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.currentUserSource.next(undefined); //Fixed Authguards no toast on first load.
+   }
 
   login(model: any){
     return this.http.post<User>(this.baseUrl + 'account/login',model).pipe(
