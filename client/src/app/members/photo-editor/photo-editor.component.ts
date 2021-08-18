@@ -8,6 +8,7 @@ import { take } from 'rxjs/operators';
 import { MembersService } from 'src/app/_services/members.service';
 import { Photo } from 'src/app/_models/Photo';
 import { isPlatformBrowser } from '@angular/common';
+import { NgxGalleryThumbnailsComponent } from '@kolkov/ngx-gallery';
 
 @Component({
   selector: 'app-photo-editor',
@@ -69,8 +70,13 @@ constructor(private accountService: AccountService, private memberService: Membe
 
     this.uploader.onSuccessItem = (item,response,status,headers) => {
       if(response){
-        const photo = JSON.parse(response);
+        const photo: Photo = JSON.parse(response);
         this.member.photos.push(photo);
+        if(photo.isMain){
+          this.user.photoUrl = photo.url;
+          this.member.photoUrl = photo.url;
+          this.accountService.setCurrentUser(this.user);
+        }
       }
     }
   }
