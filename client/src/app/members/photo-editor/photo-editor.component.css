@@ -11,3 +11,19 @@
 input[type=file] {
     color: transparent;
 }
+
+.gray{
+    opacity: 0.2;
+}
+
+.photo{
+    position: relative;
+}
+
+.floating-text{ 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: red;
+}

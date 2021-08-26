@@ -9,6 +9,7 @@ import { MembersService } from 'src/app/_services/members.service';
 import { Photo } from 'src/app/_models/Photo';
 import { isPlatformBrowser } from '@angular/common';
 import { NgxGalleryThumbnailsComponent } from '@kolkov/ngx-gallery';
+import { ConfirmService } from 'src/app/_services/confirm.service';
 
 @Component({
   selector: 'app-photo-editor',
